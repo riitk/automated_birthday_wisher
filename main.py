@@ -23,11 +23,8 @@ for ind in df.index:
         recivers_email = df['email'][ind]
         rand_letter = random.choice(FILE_NAME)
         with open(f"letter_templates/{rand_letter}", 'r') as letter:
-            a = letter.readlines()
-            msg = ''
-            for lin in a:
-                msg += lin
-            msg = msg.replace("[NAME]", recivers_name)
+            random_letter = letter.read()
+            msg = random_letter.replace("[NAME]", recivers_name)
                 
         with smtplib.SMTP("smtp.gmail.com") as connection:
             connection.starttls()
